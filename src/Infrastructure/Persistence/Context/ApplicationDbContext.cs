@@ -2,6 +2,7 @@ using Finbuckle.MultiTenant;
 using FSH.WebApi.Application.Common.Events;
 using FSH.WebApi.Application.Common.Interfaces;
 using FSH.WebApi.Domain.Catalog;
+using FSH.WebApi.Domain.Crypto;
 using FSH.WebApi.Infrastructure.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -17,6 +18,9 @@ public class ApplicationDbContext : BaseDbContext
 
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Brand> Brands => Set<Brand>();
+
+    public DbSet<Wallet> Wallets => Set<Wallet>();
+    public DbSet<Market> Markets => Set<Market>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
