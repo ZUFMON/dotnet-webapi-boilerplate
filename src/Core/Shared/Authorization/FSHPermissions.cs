@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace FSH.WebApi.Shared.Authorization;
+namespace  WebCollection.WebApi.Shared.Authorization;
 
 public static class FSHAction
 {
@@ -16,8 +16,7 @@ public static class FSHAction
 }
 
 public static class FSHResource
-{
-    public const string Tenants = nameof(Tenants);
+{ public const string Tenants = nameof(Tenants);
     public const string Dashboard = nameof(Dashboard);
     public const string Hangfire = nameof(Hangfire);
     public const string Users = nameof(Users);
@@ -26,6 +25,9 @@ public static class FSHResource
     public const string RoleClaims = nameof(RoleClaims);
     public const string Products = nameof(Products);
     public const string Brands = nameof(Brands);
+    public const string Wallets = nameof(Wallets);
+	public const string Markets = nameof(Markets);
+	
 }
 
 public static class FSHPermissions
@@ -61,6 +63,21 @@ public static class FSHPermissions
         new("Delete Brands", FSHAction.Delete, FSHResource.Brands),
         new("Generate Brands", FSHAction.Generate, FSHResource.Brands),
         new("Clean Brands", FSHAction.Clean, FSHResource.Brands),
+        
+new("View Wallets", FSHAction.View, FSHResource.Wallets, IsBasic: true),
+		new("Search Wallets", FSHAction.Search, FSHResource.Wallets, IsBasic: true),
+		new("Create Wallets", FSHAction.Create, FSHResource.Wallets),
+		new("Update Wallets",FSHAction.Update, FSHResource.Wallets),
+		new("Delete Wallets",FSHAction.Delete, FSHResource.Wallets),
+		new("Generate Wallets", FSHAction.Generate, FSHResource.Wallets),
+		new("Clean Wallets",FSHAction.Clean, FSHResource.Wallets),
+new("View Markets", FSHAction.View, FSHResource.Markets, IsBasic: true),
+		new("Search Markets", FSHAction.Search, FSHResource.Markets, IsBasic: true),
+		new("Create Markets", FSHAction.Create, FSHResource.Markets),
+		new("Update Markets",FSHAction.Update, FSHResource.Markets),
+		new("Delete Markets",FSHAction.Delete, FSHResource.Markets),
+		new("Generate Markets", FSHAction.Generate, FSHResource.Markets),
+		new("Clean Markets",FSHAction.Clean, FSHResource.Markets),
         new("View Tenants", FSHAction.View, FSHResource.Tenants, IsRoot: true),
         new("Create Tenants", FSHAction.Create, FSHResource.Tenants, IsRoot: true),
         new("Update Tenants", FSHAction.Update, FSHResource.Tenants, IsRoot: true),

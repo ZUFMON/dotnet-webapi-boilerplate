@@ -1,5 +1,6 @@
 ﻿using Finbuckle.MultiTenant.EntityFrameworkCore;
 using FSH.WebApi.Domain.Catalog;
+using FSH.WebApi.Domain.Crypto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -30,5 +31,16 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
         builder
             .Property(p => p.ImagePath)
                 .HasMaxLength(2048);
+    }
+}
+
+public class WalletConfig : IEntityTypeConfiguration<Wallet>
+{
+    public void Configure(EntityTypeBuilder<Wallet> builder)
+    {
+        builder.Property(b => b.Name).HasMaxLength(100);
+        builder.Property(b => b.NameMethod).HasMaxLength(100);
+        builder.HasOne<Market>(b => b.Market).WithOne(b => b.Wallet)
+            .HasForeignKey<Wallet>(b => b.MarketId);
     }
 }
